@@ -5,4 +5,4 @@ These are important tools made for a project on organic molecule study for Li Io
 #
 2. Also job cancellation and other cluster commands could be different depending on your high performance computing protocol. So please confirm those paritions and clusters before using mine.
 #
-3. The Master_Li.py creates and folders and set up XYZ coordinate file, input file (ORCA) and slurm file. You can change the changeXYZ function to suit your needs, same goes for input and slurm file.
+3. The Master_Li.py creates folders within folders and set up XYZ coordinate file, input file (ORCA) and slurm file. You can change the changeXYZ function to suit your needs, same goes for input and slurm file.
