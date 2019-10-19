@@ -1,0 +1,26 @@
+#!/bin/bash
+#SBATCH --output=Orca.out
+#SBATCH --error=Orca.err
+#SBATCH --job-name=Espreeso
+#SBATCH --time=200:00:00 
+#SBATCH --clusters=chemistry
+##SBATCH --clusters=ub-hpc 
+#SBATCH --partition=beta --qos=beta
+##SBATCH --partition=general-compute
+#SBATCH --account=hachmann
+#SBATCH --nodes=1
+#SBATCH --tasks-per-node=16
+##SBATCH --cluster=CHEMISTRY
+##SBATCH --constraint="CPU-E5-2630v3"
+##SBATCH --exclude=cpn-p25-18,cpn-p25-19
+##SBATCH --exclusive
+module purge
+module load mkl/2017.0.1
+module load intel-mpi/2017.0.1
+module load intel/17.0 espresso/6.1
+#pw.x <scf.in> scf.out
+mpirun -np 16 pw.x -input scf.in
+#echo "done with scf, proceeding to band structure"
+#poe -n 16 pw.x < bands.in > bands.out
+#poe -n 16 bands.x < bands_plot.in > bands_plot.out
+echo "done"
